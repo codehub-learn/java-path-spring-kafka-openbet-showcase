@@ -1,0 +1,41 @@
+version: "3.9"
+networks:
+    kafka-net:
+        driver: bridge
+services:
+    kafka-node1:
+        container_name: kafka-node1
+        image: codelearn-kafka-jre17-debian
+        build:
+            context: .
+        ports:
+            - "19092:19092"
+        networks:
+            - kafka-net
+        volumes:
+            - ./config/kafka-node1/server.properties:/kafka/config/kraft/server.properties
+            - ./data/kafka-node1/:/data/kafka/
+    kafka-node2:
+        container_name: kafka-node2
+        image: codelearn-kafka-jre17-debian
+        build:
+            context: .
+        ports:
+            - "29092:29092"
+        networks:
+            - kafka-net
+        volumes:
+            - ./config/kafka-node2/server.properties:/kafka/config/kraft/server.properties
+            - ./data/kafka-node2/:/data/kafka/
+    kafka-node3:
+        container_name: kafka-node3
+        image: codelearn-kafka-jre17-debian
+        build:
+            context: .
+        ports:
+            - "39092:39092"
+        networks:
+            - kafka-net
+        volumes:
+            - ./config/kafka-node3/server.properties:/kafka/config/kraft/server.properties
+            - ./data/kafka-node3/:/data/kafka/
