@@ -50,6 +50,8 @@
 
 		<!-- Spring project version override -->
 		<spring.kafka.version>2.9.2</spring.kafka.version>
+
+		<jackson-databind.version>2.14.1</jackson-databind.version>
 	</properties>
 
 	<!-- Dependencies -->
@@ -97,7 +99,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.13.4.2</version>
+			<version>${jackson-databind.version}</version>
 		</dependency>
 	</dependencies>
 
