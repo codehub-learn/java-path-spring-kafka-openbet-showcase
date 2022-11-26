@@ -1,6 +1,9 @@
 spring:
     kafka:
         bootstrap-servers: 127.0.0.1:19092,127.0.0.1:29092,127.0.0.1:39092
+        producer:
+            client-id: producer-1
+            retries: 3
     task:
         scheduling:
             pool:
@@ -10,3 +13,5 @@ spring:
 app:
     kafka:
         topic1: codelearn-1
+        topic2: codelearn-2
+        topic3: codelearn-3

@@ -1,29 +1,25 @@
 package gr.codelearn.spring.kafka.bootstrap;
 
+import gr.codelearn.spring.kafka.base.BaseComponent;
 import gr.codelearn.spring.kafka.produce.SampleProducer;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.LongStream;
 
-@Profile("enableRunners")
 @Component
 @RequiredArgsConstructor
-public class ProducerRunner implements CommandLineRunner {
-	private final SampleProducer producer;
-
-	@Value("${app.kafka.topic1}")
-	private String topic1;
+public class ProducerRunner extends BaseComponent implements CommandLineRunner {
+	private final SampleProducer sampleProducer;
 
 	@Override
 	public void run(final String... args) throws Exception {
 		LongStream.range(0, 10).forEach(i -> {
-			producer.sendMessage(topic1, i, "String content no" + i);
+			sampleProducer.sendMessageWithKey("codelearn-1", i, "String content " + i);
+			logger.info("Going to pause sending without keys...");
 			try {
-				Thread.sleep(250);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			}
