@@ -1,11 +1,6 @@
-#FROM bellsoft/liberica-runtime-container:jre
-#FROM openjdk:11.0.10-jre-buster
-#FROM bellsoft/liberica-openjdk-alpine:17
 FROM bellsoft/liberica-openjre-debian:17
 
-#RUN yum update && yum install -y curl # not needed in case of bash shell
-#RUN apk update && apk add curl # alpine, alpaquita
-#RUN apt-get update && apt-get install -y curl # debian
+RUN apt-get update && apt-get install -y curl # debian
 
 ENV KAFKA_VERSION 3.3.1
 ENV SCALA_VERSION 2.13
