@@ -28,7 +28,7 @@ public class KafkaConfig {
 	@Bean
 	public NewTopic newTopic() {
 		//@formatter:off
-		return TopicBuilder.name("test-topic-4")
+		return TopicBuilder.name("test-topic")
 						   .partitions(3)
 						   .replicas(2)
 						   .config(TopicConfig.RETENTION_MS_CONFIG, "100000")
